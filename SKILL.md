@@ -21,6 +21,13 @@ Enterprise Architecture, 4A Architecture, EA, BA, DA, AA, Business Architecture,
 - Validate or correct cross-layer alignment issues and naming conventions
 - Execute a complete three-layer architecture blueprint for any enterprise business scenario
 
+## When NOT to Use
+
+- Pure IT technical or infrastructure planning (no business architecture driver)
+- Standalone UML class diagrams or ER data modeling (not enterprise three-layer co-derivation)
+- Requirements gathering or user story writing (complete requirements first, then proceed to architecture)
+- Internal module-level or code-level design within a single application (scope below AA-L3)
+
 ## Core Workflow: N:1:1 Derivation Method
 
 **Core mapping logic (stable data and service atoms support variable process scenarios):**
@@ -61,6 +68,16 @@ Enterprise Architecture, 4A Architecture, EA, BA, DA, AA, Business Architecture,
 - Output the **Three-Layer Alignment Verification Table** (BA Capability Domain ↔ DA Subject Domain ↔ AA Sub-product)
 - Results form a "Blueprint-as-Code-Map", eliminating cross-layer semantic ambiguity
 
+**Standard Output Structure (Output Template):**
+
+| Output Artifact | Description |
+|----------------|-------------|
+| ① BA Layer Table | Value Line + Capability Line dual dimensions, L1–L5 fully expanded |
+| ② DA Layer Table | Subject Domain Group → BO → Logical Entity, L1–L5 fully expanded |
+| ③ AA Layer Table | Product → Service → Interface, L1–L5 fully expanded |
+| ④ N:1:1 Mapping Matrix | BA-L4 Process × DA-L4 BO × AA-L4 Service, full cross-reference, no blanks |
+| ⑤ Three-Layer Alignment Table | BA Capability Domain ↔ DA Subject Domain ↔ AA Sub-product, row-by-row |
+
 ## Layer Quick Reference
 
 | Level | BA (Value Line) | BA (Capability Line) | DA | AA |
@@ -83,3 +100,14 @@ Full principles: [Design Red Lines & Principles](./references/design-principles.
 4. **BA Dual-Line Convergence**: Value line and capability line decouple and converge at L4; no layer-skipping
 5. **MECE**: DA follows MECE, eliminates cross-domain gray areas, and clarifies Data Ownership
 6. **Semantic Consistency**: All three architectures use a unified business language; the blueprint is the code map
+7. **DA L3 Granularity Balance**: L3 Subject Sub-domains must satisfy both the "asset catalog mount perspective" and the "physical data boundary perspective"; too fine becomes indistinguishable from L4 BO; too coarse collapses into L2
+
+## Pre-Submission Checklist
+
+Verify the following 5 items before submitting any architecture blueprint:
+
+- [ ] **BA Completeness**: Both Value Line and Capability Line are fully expanded to L5; all N processes at L4 are identified
+- [ ] **DA Purity**: Zero verbs and zero technical terms in L1-L4; all BOs have independent lifecycles and state machines
+- [ ] **AA 1:1 Constraint**: AA-L4 services strictly correspond one-to-one with DA-L4 BOs; no many-to-one or one-to-many
+- [ ] **Cross-Layer Sovereignty Alignment**: BA Capability Domain, DA Subject Domain, and AA Sub-product boundaries are aligned; no orphan nodes
+- [ ] **Matrix Completeness**: All rows in the N:1:1 mapping matrix are filled; no blank cells in the Three-Layer Alignment Verification Table
