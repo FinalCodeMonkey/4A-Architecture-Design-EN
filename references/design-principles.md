@@ -2,38 +2,38 @@
 
 ---
 
-## Principle 1 — Dual-Line Parallel and Convergence (BA)
+## Principle 1 — Dual-Line Parallelism & Convergence (BA)
 
-- The Value Line defines the objective (What); the Capability Line provides the support (How). Neither can be omitted.
-- Both must **decouple and converge** at Layer L4:
-  - **Decouple**: The same L3 Business Activity can correspond to multiple L4 Processes (due to different scenario rules)
-  - **Converge**: Different processes share the same BO (N:1 derivation anchor)
-- **Prohibited**: Skipping L4 and mapping directly from L3 to L5; using an L3 Business Activity as a Process
+- Value line defines objectives (What); capability line provides support (How) — both are indispensable
+- Both MUST **decouple and converge** at L4:
+  - **Decoupling**: The same L3 business activity can correspond to multiple L4 processes (due to different scenario rules)
+  - **Convergence**: Different processes share the same BO (N:1 derivation anchor)
+- **Prohibited**: Skipping L4 to map directly from L3 to L5; using L3 business activities as processes
 
 ---
 
-## Principle 2 — De-verbification and Nominalization (DA)
+## Principle 2 — No-Verb & Noun-Only Rule (DA)
 
 DA L1-L4 **absolutely prohibits** verbs, system module names (e.g., CRM, ERP), and technical codes (e.g., UserTable).
 
-Record only **"result assets"**, not "process actions."
+Only record "**result assets**," not "process actions."
 
-| ❌ Wrong (Verb / Technical Term) | ✅ Correct (Result Asset Noun) |
-|----------------------------------|-------------------------------|
+| ❌ Wrong (Verb/Technical) | ✅ Correct (Result Asset Noun) |
+|--------------------------|-------------------------------|
 | Quotation Approval Process | Quotation Approval Information |
-| Follow-up Customer Action | Customer Outreach Record |
+| Follow Up Customer Action | Customer Contact Record |
 | Health Score Calculation | Health Score |
 | Renewal Prediction Engine | Renewal Prediction |
 | CRM Opportunity Module | Opportunity |
 
 ---
 
-## Principle 3 — MECE and Clear Data Ownership (DA)
+## Principle 3 — Mutual Exclusivity & Clear Ownership (DA MECE)
 
-- Each DA layer follows MECE (Mutually Exclusive, Collectively Exhaustive)
-- Each BO has one and only one clearly defined **Data Owner** (mapped to an AA-L3 Application / AA-L4 Service)
-- **Eliminate**: Cross-domain gray areas (situations where the same data is claimed by multiple subject domains)
-- **Eliminate**: Gray BOs (the same business concept having different names in different places)
+- All DA layers follow MECE (Mutually Exclusive, Collectively Exhaustive)
+- Every BO has exactly one explicit **Data Owner** (corresponding AA-L3 application / AA-L4 service)
+- **Eliminate**: Cross-domain grey areas (same data claimed by multiple subject domains)
+- **Eliminate**: Grey BOs (same business concept with different names in different places)
 
 ---
 
@@ -41,44 +41,44 @@ Record only **"result assets"**, not "process actions."
 
 DA-L3 balances two perspectives:
 
-1. **Asset Catalog Perspective**: Serves as the hub for mounting data assets, supporting management-layer data governance and asset discovery
-2. **Physical Storage Perspective**: Points to real data boundaries; avoids over-granulation or over-consolidation
+1. **Asset catalog perspective**: Serves as the hub for data asset mounting; supports management-level data governance and asset discovery
+2. **Physical storage perspective**: Points to real data boundaries; avoids excessive granularity or excessive aggregation
 
 **Typical errors:**
-- L3 granularity too fine → Indistinguishable from L4 BO; effectively redundant
-- L3 granularity too coarse → Indistinguishable from L2; layer collapse
+- L3 granularity too fine → indistinguishable from L4 BO; serves no purpose
+- L3 granularity too coarse → indistinguishable from L2; level collapse
 
 ---
 
-## Principle 5 — Capability Alignment (AA)
+## Principle 5 — Capability Inheritance & Alignment (AA)
 
-- AA-L1/L2 must **strongly correspond** to BA Capability Domains / DA Subject Domains (consistent sovereignty boundaries)
-- AA-L4 **must** bind 1:1 with DA-L4 BO:
+- AA-L1/L2 MUST **strongly correspond** to BA capability domains / DA subject domains (ownership boundaries consistent)
+- AA-L4 **MUST** be 1:1 bound to DA-L4 BO:
   - Prohibited: 1 service managing multiple BOs (logical silo)
   - Prohibited: 1 BO managed by multiple services (state machine fragmentation)
-- The `AA-L3 Microservice ↔ DA-L3 Subject Sub-domain` correspondence must be traceable
+- `AA-L3 microservice ↔ DA-L3 subject sub-domain` correspondence must be traceable
 
 ---
 
 ## Principle 6 — Semantic Consistency Throughout (Cross-Architecture)
 
-- All three architectures (BA / DA / AA) use the **same unified business language**; the same concept uses the same term
-- **"Blueprint as Code Map"**: Architecture naming directly guides code package names, class names, and API paths:
-  - DA-L4 BO name → aggregate root class name in code
+- All three architectures (BA/DA/AA) use **the same business language**; identical concepts use identical terms
+- "**Blueprint-as-code-map**": Architecture naming directly guides code package names, class names, API paths
+  - DA-L4 BO name → Aggregate root class name in code
   - AA-L4 service name → Service class name in code
   - AA-L5 interface name → Controller method name in code
-- Semantic ambiguity must be resolved at Layer L4 and must not carry over to the coding phase
+- Semantic ambiguity MUST be eliminated at L4; never deferred to the coding phase
 
 ---
 
 ## Principle 7 — Completeness Requirement (Output)
 
-**All architecture design outputs must include complete L1-L5. Simplification using "examples" or "..." is strictly forbidden.**
+**All architecture design outputs MUST include complete L1-L5; NEVER simplify with "example" or "...".**
 
-Standard output template must include:
+Standard output template should contain:
 
-1. **BA Layer Table** (Value Line + Capability Line, L1-L5, all entries)
+1. **BA Layer Table** (value line + capability line, L1-L5, all entries)
 2. **DA Layer Table** (L1-L5, including all BOs and their logical entities)
 3. **AA Layer Table** (L1-L5, including all services and interfaces)
-4. **N:1:1 Mapping Matrix** (BA-L4 Process × DA-L4 BO × AA-L4 Service, full cross-reference)
-5. **Three-Layer Alignment Verification Table** (BA Capability Domain ↔ DA Subject Domain ↔ AA Sub-product, row-by-row verification)
+4. **N:1:1 Mapping Matrix** (BA-L4 processes × DA-L4 BO × AA-L4 services, complete cross-reference)
+5. **Tri-Architecture Alignment Verification Table** (BA capability domain ↔ DA subject domain ↔ AA sub-product, row-by-row verification)
